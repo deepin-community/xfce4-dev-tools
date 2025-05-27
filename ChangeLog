@@ -1,3 +1,1175 @@
+commit 127d0abd88f3759fca8f6126460465910d24085d
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Sun Dec 15 10:18:32 2024 +0100
+
+    Updates for release
+
+commit ab69a23e565252938d226fbf447a42f4452e99c0
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Fri Nov 1 22:04:37 2024 +0100
+
+    Back to development
+
+commit aaaa112d3e3443fb216e2dd7f9bec622972d7d91
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Fri Nov 1 22:03:11 2024 +0100
+
+    Updates for release
+
+commit 7e51adb0818ad6f4e0b6e441f22e89dcdec7c6b7
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Nov 1 16:43:31 2024 +0100
+
+    xfce-do-release: Do not warn when using main instead of master
+
+commit 7e4d43e7906f7532999dd5992c1fdd4fda418a51
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Oct 21 10:52:21 2024 +0200
+
+    Add libgspell-1-dev to CI build
+
+commit 8e042c27e8745cf055508c46f0625540f2927241
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Fri Oct 18 11:21:50 2024 -0700
+
+    Add more details to the meson template and its README
+    
+    This adds more detailed information about gobject-introspection, as well
+    as how to build vala API descriptions.  It also includes information
+    about detecting the presence of library functions, libm, and shipping
+    the meson build files in the autotools tarball.
+
+commit 6569437523b1109ffa21ef11e49fcd88c93353ac
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Sun Oct 13 15:27:46 2024 -0700
+
+    Work around parallel 'make distcheck' bug in gettext
+    
+    See:
+    https://lists.gnu.org/archive/html/bug-gettext/2024-05/msg00014.html
+
+commit 9008df45d2d5a0566205f86c45026683402982b8
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Mon Oct 7 02:37:50 2024 -0700
+
+    Don't quote the filename args passed to 'git diff'
+    
+    One of these may be the empty string, if either the autotools build or
+    meson build is missing.  Passing the variables bare will make the
+    command line think there's nothing there at all, but quoting an empty
+    string acts as an empty string command line argument, which 'git diff'
+    will get confused by.
+    
+    Usually it's of course a good practice to quote variables that contain
+    filenames, since they could have spaces in them or other shell-unsafe
+    characters.  But in this case we know the variable will contain a string
+    that consists of only letters and dots.
+
+commit bcf3b8c9e90b9daa48e20c1f11e20d71bd2de827
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Thu Oct 3 16:39:47 2024 +0200
+
+    ci: Parallelize autotools builds
+    
+    Closes: #65
+
+commit 92a76eb093d9aaec29419afd40e05002c256a05f
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Thu Oct 3 05:59:31 2024 -0700
+
+    Back to development
+
+commit fcbe86a8da1113a305ba058e7cbcf0186b461389
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Thu Oct 3 05:58:17 2024 -0700
+
+    Updates for release
+
+commit e096d88c9624dd2240723719dbbc7bb4ff057ff8
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Thu Oct 3 05:46:16 2024 -0700
+
+    xfce-do-release: fix quoting for xfce-build command
+    
+    Without this, the first command in the list gets run in xfce-build, but
+    the rest get run outside the container on the host system.
+
+commit 7a9ac432099d9cf20a9593225c2cd09bd50c638b
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Thu Oct 3 03:10:46 2024 -0700
+
+    Add a couple more compiler flags to the meson template
+
+commit 80a3a4c938a5903488911d4dd9bdef64041f75d0
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Wed Oct 2 13:21:29 2024 -0700
+
+    Bump glib dependency in meson template
+
+commit 1e28f7a536de889b235a29cdf483bb2e3cda69af
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Wed Oct 2 13:20:52 2024 -0700
+
+    Add gobject-introspection example check to meson template
+
+commit e011a74b5be86bdee41fe43cca4f86dbe5e6c66a
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Oct 2 18:39:32 2024 +0200
+
+    build: Bump requirements for Xfce 4.20
+
+commit a68d2d36dfbae6930521f404a0164587e97f3c70
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Wed Oct 2 03:11:37 2024 -0700
+
+    Disable ABI_CHECK for no-x11 and no-wayland builds
+    
+    Sometimes disabling one or the other will result in a different ABI, so
+    just disable the check for those builds.
+
+commit 5f5c4f4a2eb09cdd99f8ae908ee1b0b7184a86f1
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Tue Oct 1 13:33:38 2024 -0700
+
+    Back to development
+
+commit 5784e66763832f92ae99396b8d02f7a0df68318c
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Tue Oct 1 13:31:48 2024 -0700
+
+    Updates for release
+
+commit 95441ab9a0b7f5e2235ac1577f5f14ffbc9a0c4c
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Fri Sep 20 15:53:32 2024 -0700
+
+    Add optional ABI check to the CI build stage
+    
+    A CI variable called ABI_CHECK needs to be set in the repository
+    configuration.  It should be a space-separated list of colon-separated
+    symbol-path + library-filename pairs.
+    
+    (The symbol path should be a repository-root-relative path to the
+    .symbols file, while the library filename should just be the filename,
+    and CI will attempt to find it inside the repository.)
+
+commit d5879e94d0a66cc27ff04427876d4a1d2ab2859c
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Fri Sep 20 15:01:44 2024 -0700
+
+    Add GNU visibility generation and ABI check script
+    
+    It seems that all the library projects have their own copies of this,
+    which seems kinda silly.  And there are some downsides to those files:
+    
+    * The visibility alias file generation script is written in perl.  This
+      isn't generally a bad thing, but requires people have perl installed.
+      With the meson build, python will be required, so might as well write
+      it in python.
+    * The symbols file consumed by the scripts is a C preprocessor file, and
+      its a bit tedious, annoying, and error-prone to write.  The new format
+      that the new scripts consume is simple and easy to read and write.
+    
+    There was also never really any documentation for how to set all this
+    up, so I've written a README that describes the process for both
+    autotools and meson.
+
+commit d4a8b90e3158794f9f523cfb4467b07816fec3d2
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Wed Sep 18 19:57:26 2024 -0700
+
+    Enhance/fix xfce-revision.h
+    
+    Adds VERSION_FULL and PACKAGE_VERSION_FULL to xfce-revision.h, which can
+    be more easily used in apps.
+    
+    Fixes version component splitting; previously it split on 'git', but it
+    should be '-dev' now.
+    
+    Adds a 'version_short' meson.build variable for convenience.
+
+commit 5565875f70f709b3155e4df17ee40b5e24bfbed7
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Sat Apr 6 20:28:05 2024 -0700
+
+    Add a project template for meson
+
+commit 53e9b08fc0e0ac633d5394369e0cccd8a1426062
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Sat Apr 6 20:27:51 2024 -0700
+
+    Add meson support to xfce-do-release
+
+commit eeb42aa4c022b8b4ba23629034e1f7ba388c9e5f
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Sat Apr 6 20:27:29 2024 -0700
+
+    Add meson support to GitLab CI template
+
+commit bc17fdc2d040cf1846359b6cfbd4b458ef8121c1
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Sat Apr 6 20:26:05 2024 -0700
+
+    Allow the container build to build dependencies using meson
+
+commit 194f6b6d240554b6fe6b2365209f46069b7082b8
+Author: correctmost <11866-correctmost@users.noreply.gitlab.xfce.org>
+Date:   Sat Jul 20 01:02:38 2024 -0400
+
+    Plug leak stemming from g_path_get_basename
+
+commit aedb03ac20601c363c7f8e04c732061b0983e79e
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Mon Sep 2 03:29:39 2024 -0700
+
+    Add libyaml-dev to the build container
+    
+    xfdesktop will be needing it soon.
+
+commit 4a5100bb45bb77bc042ebe99ed23bbc0093b0ceb
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Thu Jun 27 04:02:35 2024 -0700
+
+    Add libdisplay-info-dev to build container
+    
+    Soon this will be needed by libxfce4windowing.
+
+commit 9bd05b7b305e99006a9b78332e269422b8dd2de7
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat Jun 22 15:56:37 2024 +0200
+
+    Add meson to CI build
+    
+    And some other packages needed by apps/catfish!60.
+
+commit 6050c99327e32511691cc13af3407a4158b7559d
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun May 26 17:25:30 2024 +0200
+
+    ci: Do not store clang-format-diff output
+    
+    I had originally used a log file in !101 because clang-format-diff <= 17
+    didn't emit an error code in the event of non-empty output, but this is
+    no longer the case with clang-format-diff >=18, so the use of this file
+    is no longer justified.
+    
+    Amends: cbbceb2fa207a56a74abf77d14054b76a201ba03
+
+commit 779e4363d8d7e96ae5dc2aae37e69c3dcd45eedc
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun Jun 9 15:18:13 2024 +0200
+
+    ci: Enable on maintenance branches
+
+commit add69d4e66e34e858af761fe872c80cd62cb9ad6
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun Jun 9 12:31:12 2024 +0200
+
+    ci: Only run static analysis jobs on default branch
+    
+    i.e. for commits on default branch and merge requests against default
+    branch. Do not run these jobs for tags, it's pretty useless and would
+    force us to distinguish between tags on default branch and tags on
+    maintenance branches.
+    
+    Do not run these jobs on translation commits either, since in this case
+    the build jobs didn't run (unfortunately 'needs' doesn't handle this
+    automatically).
+    
+    Amends: 8bf2175d178313c2b6b6a7efb634cd98917c2290
+
+commit 0466aff75c0b20a667ccc2191ffe5a9b08507e06
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Jun 5 22:20:09 2024 +0200
+
+    ci: Make false-positive patterns match a single warning
+    
+    Otherwise, it's possible for a pattern to correspond to several
+    warnings, not all of which are false positives. By adding sufficiently
+    precise patterns as indicated in the comments, this is unlikely, but not
+    impossible.
+    
+    In the case of this pattern, for example, currently present in
+    xfce4-panel:
+    tasklist-widget.c:[0-9]+:[0-9]+: warning: dereference of NULL 'child' \[CWE-476\] \[-Wanalyzer-null-dereference\]
+    the 'child' variable has enough occurrences in the tasklist-widget.c
+    file that the risk of a multiple match cannot be ruled out.
+    
+    The simplest way to specify a multiple match seems to be to add the
+    pattern several times, instead of specifying the number of matches,
+    which would require additional parsing with a delimiter.
+    
+    Amends: 8bf2175d178313c2b6b6a7efb634cd98917c2290
+
+commit b3a9f742e9f5c122e7ac4e9b076098f331acc1f7
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun Jun 16 11:11:14 2024 +0200
+
+    ci: Explicitly specify C++ compilers
+    
+    This may be necessary in certain situations, for example when performing
+    static analysis with scan-build, to ensure that the standard C++ library
+    is added to the linker. See
+    https://gitlab.xfce.org/panel-plugins/xfce4-sensors-plugin/-/issues/48#note_90769
+
+commit 1644b65b8b7fb19fd8d06827d099c30aaf38193c
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun Jun 9 18:14:56 2024 +0200
+
+    ci: Ensure scan-build uses clang as compiler
+    
+    Otherwise it overrides CC and uses the default compiler, i.e. gcc in our
+    case, making build-clang a duplicate of build-gcc + scan-build.
+    
+    Fixes: 8bf2175d178313c2b6b6a7efb634cd98917c2290
+
+commit 8bf2175d178313c2b6b6a7efb634cd98917c2290
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri May 31 10:20:07 2024 +0200
+
+    ci: Add static analysis jobs
+    
+    This requires extra effort on the part of maintainers, and is therefore
+    disabled by default. To activate these jobs, you need to add the CI/CD
+    variables GCC_ANALYZER and/or SCAN_BUILD to each project.
+    
+    These static analysis tools are quite prone to false positives, so for
+    these jobs to be useful, it seems the right approach is to not allow
+    them to fail and maintain false positive files (otherwise we risk
+    getting used to seeing them fail and simply not paying attention). How
+    to fill in these files is indicated in the comments.
+    
+    As we only change software versions every two years in CI, the extra
+    maintenance effort should be quite small though, once the first warnings
+    have been fixed or ignored. The fact remains, however, that their
+    analysis can be more tortuous and time-consuming than that of simple
+    compiler warnings.
+    
+    Also, the list of warnings not to be turned into errors for the gcc
+    analyzer will need to be updated every time we change version, i.e.
+    again every two years (otherwise the build-gcc job is likely to fail
+    when checking the compiler during configuration).
+    
+    Closes: #51
+
+commit 1141463d57cfa59d2518bd3060933026b4215480
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri May 31 10:12:10 2024 +0200
+
+    ci: Rename .make hidden job to .configure
+    
+    Jobs and inheritances are starting to pile up, so it's best to give
+    things a name that won't cause confusion.
+
+commit 9fc85a251e5ef8def002105ae409ac911d9ecbb4
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon May 27 13:10:36 2024 +0200
+
+    ci: Add clang build
+
+commit 6943d356517171636d69a0cd0d310a256f7efab7
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon May 27 13:02:47 2024 +0200
+
+    ci: Build with --disable-debug in distcheck stage
+    
+    In addition to the --enable-debug=werror (i.e. full + -Werror) of the
+    build stage, so we should compile all code paths (relative to debug
+    mode). This requires projects not to use DISTCHECK_CONFIGURE_FLAGS
+    directly in their Makefile.am, but AM_DISTCHECK_CONFIGURE_FLAGS, so that
+    the flags we set here are not overwritten.
+
+commit 6d51a3b016f3b86b4e3ca4cc64abc3d537e6bc6a
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun May 26 21:14:16 2024 +0200
+
+    ci: Only run a stage if previous didn't failed
+    
+    This is the default behavior that seems to have been overwritten for no
+    good reason. Typically distcheck should not run if build has failed.
+
+commit 1fef4bc28869769e104ef32472ee7fb9e926c15c
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun May 26 12:09:47 2024 +0200
+
+    ci: Avoid clang-format job failure if diff is empty
+    
+    This is a corner case, but it can happen when a sequence of commits
+    results in an empty diff (for example, a commit followed by a revert).
+    
+    Fixes: cbbceb2fa207a56a74abf77d14054b76a201ba03
+
+commit 4bd037dbe567d9161e7a65108e31f955194a570b
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed May 29 17:44:56 2024 +0200
+
+    Add libdbus-glib-1-dev to CI build
+    
+    For parole and xfce4-screensaver, to be removed when these issues are
+    solved:
+    https://gitlab.xfce.org/apps/parole/-/issues/114
+    https://gitlab.xfce.org/apps/xfce4-screensaver/-/issues/153
+
+commit fa58e74280b3d95d8f944ab23577a950b44cd615
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed May 29 09:03:38 2024 +0200
+
+    Back to development
+
+commit b2d45129fd237ab5e9a2876f42c54a226b86a48a
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed May 29 09:03:01 2024 +0200
+
+    Updates for release
+
+commit d977c9429c78100155af54c32d15e6b65b4667a1
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon May 27 13:10:36 2024 +0200
+
+    ci: Add no-x11 and no-wayland builds
+    
+    Instead of adding them to each project, and thus having them as correct
+    .build extensions. This remains opt-in, with projects wishing to
+    activate these builds having to define (X11|WAYLAND)_FEATURE CI/CD
+    variables. I had originally thought of parsing configure.ac to detect
+    this, but it doesn't seem to be supported; maybe that's better.
+
+commit dee6ec44e49bac20a9b60744774db49f41ede8f5
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun May 26 19:21:19 2024 +0200
+
+    ci: Make build stage fail on any compiler warning
+    
+    Including on glib deprecation warnings, which are probably the only ones
+    we care about.
+    
+    This assumes that XDT_FEATURE_DEBUG is used on all projects where
+    build_project.yml is included, which is currently the case.
+    
+    This only applies to the build stage, as other distcheck-specific
+    warnings may appear that we don't necessarily want to turn into errors,
+    especially on vala projects. Also, this leaves open the possibility of
+    applying another debug level to distcheck, and thus compiling other code
+    paths.
+
+commit 63ca64eb793e851f4b2892009ca4c04626781a62
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun May 26 12:50:25 2024 +0200
+
+    ci: Make jobs running in merge requests interruptible
+    
+    By default, projects are configured so that a running pipeline is
+    interrupted if new changes are pushed in a merge request. But for this
+    to work in practice, all jobs in the pipeline must also be flagged
+    interruptible, otherwise the pipeline is not interrupted.
+    
+    See https://docs.gitlab.com/ee/ci/yaml/index.html#workflowauto_cancelon_new_commit
+
+commit cbbceb2fa207a56a74abf77d14054b76a201ba03
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Apr 22 17:52:52 2024 +0200
+
+    ci: Add clang-format check
+    
+    Related: https://gitlab.xfce.org/apps/orage/-/issues/32
+
+commit 00ff58a322bea07140a52c9c51723ead9bc7bbaf
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Apr 22 17:25:44 2024 +0200
+
+    Update `.gitignore`
+
+commit 480a1f728776bf572a8c7cc389e65d311ac29950
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Tue Apr 9 16:57:44 2024 +0200
+
+    Bump CI container to Ubuntu 24.04
+    
+    - More recent version of everything, should help to introduce new
+      features.
+    - Bump docker dind (docker-in-docker) image used to build CI container
+      itself
+
+commit 8456563ea3f1633a23141a26f4510f3b238bc837
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat May 6 10:31:11 2023 +0200
+
+    xdt-autogen: Fix aclocal macro search path
+    
+    Probably a regression introduced in 2759f19c.
+    
+    Fixes: #62
+
+commit a02cc7b84a971bcbc8df3ed93c6a583257f212ec
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Thu Feb 22 10:18:21 2024 +0100
+
+    Add libjson-c-dev to CI build
+    
+    For xfce4-weather-plugin.
+    
+    Related: panel-plugins/xfce4-weather-plugin!26
+
+commit b65a49af27dca9aa9438b7c5a1181618d44255da
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Wed Nov 1 08:05:58 2023 -0700
+
+    Clone submodules for current repo in CI template
+
+commit 4ff8b0280809f04472c23bc08ffb823f29328749
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Tue Oct 31 08:32:58 2023 -0700
+
+    Clone submodules when cloning repo for CI container build
+
+commit e650a815405e946c88cb5d508074c685c78fd334
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat Jul 15 23:37:34 2023 +0200
+
+    xfce-do-release: Skip appdata if file does not exist in right format
+    
+    This is only useful for components packaged in flatpak in practice, i.e.
+    for Mousepad and Ristretto. There's no point in asking to update this
+    file if it's irrelevant.
+
+commit 5fba4331391753377a22a18315d44e57577827b6
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat Jul 15 21:11:31 2023 +0200
+
+    xfce-do-release: Warn about unmodified configure.ac.in
+    
+    Hopefully this will prevent releasing without changing the version
+    number.
+
+commit aa3e9a97b3b120cc9f2d7fb9d4d01202777f40b1
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Thu Jun 1 10:05:43 2023 +0200
+
+    xfce-do-release: Use available proc units for make
+
+commit 74607cc5d82c0adc8a39e8cd82136d5132c28bc6
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Thu Apr 20 19:49:36 2023 +0200
+
+    Add libayatana-indicator3-dev to CI build
+    
+    For xfce4-indicator-plugin.
+
+commit f27bcad8b9bc6749272d65e1815751713798d3a3
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Apr 12 14:12:37 2023 +0200
+
+    Remove -Wdeclaration-after-statement from list of enabled warnings
+    
+    We use C99 features in various places (especially init-statement in for
+    loops), and C99 allows declaration after statement. This also avoids
+    warnings from other projects, like GObject Introspection >= 1.76.1 via
+    g-ir-scanner.
+
+commit c47d9389a6711fbf3944d37da2180e81ebc88631
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Apr 10 19:07:19 2023 +0200
+
+    Add polkitd to CI build
+    
+    For gettext migration of project containing a policykit file.
+
+commit c061b37c61f038f2069e703714cf580d1d759111
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Sun Mar 5 00:43:49 2023 -0800
+
+    Back to development
+
+commit 785c9a34dae57d00a73aa84216292a25ab897773
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Sun Mar 5 00:40:58 2023 -0800
+
+    Updates for release
+
+commit 2e5ee77b78c2fdb0f97b7b424ed44eaedadbf921
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Thu Mar 2 15:54:39 2023 -0800
+
+    Add new macro XDT_CHECK_PACKAGE_BINARY
+
+commit 8aeae028f95c4b7cedbe9064526eb8e2aad823ed
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Thu Mar 2 15:36:02 2023 -0800
+
+    Add new macro XDT_CHECK_OPTIONAL_FEATURE
+
+commit 074bfe3367609771d8ea05178e1d4fce7af2a311
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Mon Feb 13 21:44:05 2023 +0100
+
+    Add check for xsltproc (#60)
+
+commit fff16fc002223207756fc013f2787e66df1d2245
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun Feb 19 18:04:28 2023 +0100
+
+    Add Tumbler plugins dependencies to CI build
+
+commit a8dd70a06e4d658f4e499d4d52f4d7eb086a6161
+Author: Erkki Moorits <erkki.moorits@mail.ee>
+Date:   Fri Feb 17 15:42:08 2023 +0200
+
+    xfce-do-release: added OS dependent sed and make detection
+
+commit a207110ed20041c1d6f718722d18394e05fa6a06
+Author: Erkki Moorits <erkki.moorits@mail.ee>
+Date:   Fri Feb 17 15:29:54 2023 +0200
+
+    xfce-do-release: added user settable sed and make
+
+commit a99e33603f6c981770aa90dad0f544f5b8259082
+Author: Erkki Moorits <erkki.moorits@mail.ee>
+Date:   Wed Feb 8 17:01:35 2023 +0200
+
+    xdt-autogen: Fixed wrong make displayed on FreeBSD
+
+commit 91bff86d9c1348403773d8ea0f1e3c5362e04ec4
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Tue Jan 3 04:13:51 2023 -0800
+
+    Add libxfce4windowing to the API docs HTML index
+
+commit a090b333a7b1ed6757aebc406e968e3d7a5ba4af
+Author: Brian J. Tarricone <brian@tarricone.org>
+Date:   Thu Dec 15 02:15:14 2022 -0800
+
+    Add libxfce4windowing to CI build
+
+commit aa279559cbe6e9acb8728c59ea62b3ab14ab7069
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Thu Dec 15 10:46:18 2022 +0100
+
+    Back to development
+
+commit 98a7c8e777c21c127da2fd5f7d01a26c5e18d249
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Thu Dec 15 10:43:35 2022 +0100
+
+    Updates for release
+
+commit 68716b0878c1bc0aa5d13c177cfb55c38cc770f7
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Dec 5 21:12:16 2022 +0100
+
+    build: Bump requirements for Xfce 4.18
+
+commit 0516736aefe694b0b478a256c321559a15450fbc
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Thu Dec 1 09:09:59 2022 +0100
+
+    Back to development
+
+commit a8cd0b05e0604d62acf32db2a4c6e0c783d161f1
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Thu Dec 1 09:04:46 2022 +0100
+
+    Updates for release
+
+commit 3e4bd95382648b7ab2ecb4e7a40210f76ff890d3
+Author: Andre Miranda <andreldm@xfce.org>
+Date:   Thu Nov 17 22:55:46 2022 +0100
+
+    So much for package name consistency...
+
+commit fb378ec505bee63c204283ccc2340bf9ac78536d
+Author: Andre Miranda <andreldm@xfce.org>
+Date:   Thu Nov 17 22:51:33 2022 +0100
+
+    Add new libsoup3 to the builder
+
+commit eac29eae51dac96e5c5674dc402240c6ed7e8c14
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Sun Nov 13 22:23:31 2022 +0100
+
+    xfce-do-release: unification of update version 'sed' command
+
+commit 66993edccf3d6e2179a671298523d1817d076cfb
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Sun Nov 6 00:12:20 2022 +0100
+
+    xfce-do-release: match multiple spaces for git version replace
+    
+    Makes 'xfce-do-release' as well usable for xfwm4, which has some more
+    spaces in the line: 'm4_define([xfwm4_version_tag],   [git])'
+    
+    MR !74
+
+commit 5a965bc83640df1087dd7e2f5e139d9094a87736
+Author: Alexander Schwinn <alexxcons@xfce.org>
+Date:   Sat Nov 12 21:30:01 2022 +0100
+
+    bump copyright year to 2022
+
+commit 2b332e9ab0fe2194eb3d7849ba6c815ff2b3f6ae
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Sat Oct 29 16:02:13 2022 +0200
+
+    Back to development
+
+commit c012bb4a385f6e2f7068510b9fb5665adb4a30bf
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Sat Oct 29 15:57:40 2022 +0200
+
+    Updates for release
+
+commit e17223e0a826ee301967282b391abdd42e457596
+Author: Jan Ziak <0xe2.0x9a.0x9b@gmail.com>
+Date:   Fri Dec 4 12:01:17 2020 +0100
+
+    Warn about GLib functions newer than the checked GLib version
+    
+    This patch enables GLib deprecation warnings in all XFCE apps and libraries
+    containing function calls such as XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.56.0])
+    in their configure.ac.in files in the following way:
+    
+    AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_56, Prevent post 2_56 APIs)
+    AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_56, Ignore post 2_56 APIs)
+    
+    The 3rd argument passed to XDT_CHECK_PACKAGE([GLIB], ...) selects the
+    GLib API version. So XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.44.0])
+    would add:
+    
+    AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_44, Prevent post 2_44 APIs)
+    AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_44, Ignore post 2_44 APIs)
+    
+    The enabled warnings can be overridden by the app or library by using
+    the two AC_DEFINEs after calling XDT_CHECK_PACKAGE([GLIB], ...).
+    
+    Something like XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.45.8]) will make
+    the XFCE app or library uncompilable because 2.45 isn't a stable GLib release.
+    
+    See also: https://gitlab.xfce.org/apps/xfce4-notifyd/-/issues/34
+    
+    Signed-off-by: Jan Ziak <0xe2.0x9a.0x9b@xfce.org>
+
+commit 01684335f58619ed3b0a4027d02de2764aba7c83
+Author: Akbarkhon Variskhanov <akbarkhon.variskhanov@gmail.com>
+Date:   Wed Sep 14 20:36:17 2022 +0000
+
+    Drop the test altogether
+    
+    This avoids situations like `export EGREP=egrep; ./autogen.sh`
+
+commit f97c4473ea1b63bbd7bca3bd29ec9ef7a053547a
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat Sep 10 12:36:07 2022 +0200
+
+    xdt-autogen: Fix deprecation warning from grep 3.8
+
+commit 5a058ea63a1544b4147f0a4534b70aaf037f8ad6
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Apr 8 19:03:14 2022 +0200
+
+    Use GLib structured logging
+    
+    Suitable for viewing logs in tools such as `journalctl`, in particular
+    adding location information to the message.
+    
+    Requires `GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_56` to work
+    properly in GLib logging macros (not documented, see
+    `glib/gmessages.h`).
+
+commit 1ab2053cf4ba13e41cebd8859687ea6f28c7576f
+Author: Akbarkhon Variskhanov <akbarkhon.variskhanov@gmail.com>
+Date:   Wed Sep 14 18:35:23 2022 +0000
+
+    xdt-autogen: simplify do_version_check()
+
+commit 7f253e5da0ae1cfbeabcf680126452b232bc2a7e
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Thu Aug 25 12:10:08 2022 +0200
+
+    Add new dependencies to the builder
+    
+    - libical-dev for orage
+    - libgtk-layer-shell-dev for wayland stuff
+
+commit 240ea1b13ff3294f5e3250eafde4bbd3d395c59d
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Fri Aug 19 16:44:15 2022 +0200
+
+    Do not run useless distcheck in CI
+    
+    - Since dbfc8c88b56962e85bfdc2b444dcd49d99ddd30c, distcheck is run even
+      when there is only a commit in po/
+    - This is because "extends" merges hashes, but not array, so the
+      ".make" rules are overriden by the "distcheck" rule
+    - Use !reference to force the usage of ".make" rules in distcheck (and
+      this avoid duplicating the "if" everywhere)
+
+commit 1007718676990c235d905c740b8668ac8c9fb6a0
+Author: Manuel Grießmayr <abspack@posteo.de>
+Date:   Fri Aug 19 19:36:09 2022 +0000
+
+    Add favicon to Xfce API docs
+
+commit 7530b65d7465eb48a76675e3893d3738f2c4eb50
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Mon Feb 7 22:45:42 2022 +0100
+
+    Bump our xfce builder to ubuntu 22.04
+    
+    - This is the new Ubuntu LTS version
+    - Reorder packages installations
+    - Install gtksourceview5/gtk4-dev libs
+    - Bump docker-dind to latest version
+
+commit 51ca08881ab59acf1f1cb30f22074e51be95bee9
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Thu Apr 7 23:14:30 2022 +0200
+
+    Add autopoint to xfce-build
+    
+    - This is needed by autotools when using gettext instead of intltool
+
+commit b68ae2f7fe9a16d730e38d4e61756ed41f56b00c
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Thu Apr 7 19:43:55 2022 +0200
+
+    Add a workaround for thunar documentation generation
+    
+    - Since https://gitlab.xfce.org/xfce/thunar/-/merge_requests/153,
+    we have thunar and thunarx documentations, which is not supported by the script
+    - This break the container build
+
+commit 1448199eb4649e7f2b315ef4560ab44312f1f7da
+Author: Kevin Bowen <kevin.bowen@gmail.com>
+Date:   Tue Mar 22 07:07:23 2022 -0700
+
+    Update COPYING
+
+commit de6137361ee3bb8a8b398a349a3cdab4f297c116
+Author: Simon Steinbeiß <ochosi@xfce.org>
+Date:   Fri Mar 4 02:53:38 2022 +0000
+
+    xfce-build: Fix build with SELinux (!58)
+    
+    If you're using SELinux locally you will have to pass the "z" parameter
+    to make the volume mounted in the container readable.
+
+commit 2ae47732a54ebfdbfa9c8e938e6e3be28c204e73
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat Nov 27 09:41:46 2021 +0100
+
+    xfce-update-news: Add release date and adjust separator
+
+commit 639984b37056c786da601d413949fa197d9b864b
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Jan 14 12:59:22 2022 +0100
+
+    xfce-do-release: Make warnings more visible
+
+commit 2f493d79f2454dc2eb62dd955c0849e21587d6e1
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Jan 7 13:31:45 2022 +0100
+
+    xfce-do-release: Check the copyright year in `configure.ac*`
+
+commit 7651c19ef009a99ac8367e88720231e58458d3af
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Jan 7 13:06:39 2022 +0100
+
+    xfce-do-release: Extend `configure.ac.in` update to `configure.ac`
+    
+    The use of `m4_define` is also found in `configure.ac` files, with or
+    without a version tag, which is not a problem. The use of
+    `XDT_VERSION_INIT` is probably always exclusive of the use of
+    `m4_define`, but the filter by grep does not bother.
+
+commit 9a71068cf03f565d93812d1d79194129bf48cb99
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat Jan 29 09:18:20 2022 +0100
+
+    xdt-autogen: Fallback on `\n` as IFS if `\1` is not supported
+    
+    Fixes #54.
+
+commit bb06a93ddc609ffe587aaccc1e9929461c30ff51
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Jan 26 23:16:44 2022 +0100
+
+    Fix exclusion of `xdt-autogen.in` in `.gitignore`
+
+commit 02e5bab0eabd0ef0d94a15ac1d600d4141b8376c
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Wed Oct 13 17:29:50 2021 +0200
+
+    Update developer.xfce.org home to add tumbler
+
+commit 89ec470fabb43cd31cdd155b1aee8f1d1eaad8a7
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Wed Oct 13 16:46:15 2021 +0200
+
+    Add tumbler to xfce-build container
+    
+    - Fix #53
+
+commit 724c75b1662265f27dd6c1bae7c8a078bd657237
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Wed Oct 13 16:45:02 2021 +0200
+
+    Fix "image:" name in .gitlab-ci.yml
+    
+    - Type from  64bc66536aaaeded488cf7a3a9d067cea9748545
+
+commit be59ed378f846ea545bf9f0c08c297415162e288
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Wed Oct 13 16:43:27 2021 +0200
+
+    Add libsensors4-dev to build-container
+
+commit 64bc66536aaaeded488cf7a3a9d067cea9748545
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Thu Aug 19 12:24:06 2021 +0200
+
+    Try to bump docker-dind image
+
+commit 5e6bdfba4427f2a70c13099726c9c4edd21a5c97
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Sep 24 11:11:34 2021 +0200
+
+    xfce-do-release: Update Appdata file
+    
+    This adds the new release to the Appdata file if the `<releases>` tag
+    exists. This file is only searched in the root of the repository and in
+    the `data` directory, and must be unique.
+
+commit 7f231c22e1ade73d984ea51d48eee8662065ca8d
+Author: Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at>
+Date:   Thu Sep 16 23:56:08 2021 +0200
+
+    gitlabci: Ensure distcheck still runs
+
+commit dbfc8c88b56962e85bfdc2b444dcd49d99ddd30c
+Author: Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at>
+Date:   Tue Sep 7 00:45:14 2021 +0200
+
+    gitlabci: Add release stage that retains tarballs
+    
+    This stage is only run for tags and is essentially the same as the
+    distcheck stage.
+
+commit ef3ca47e7c8e489ef167abadafa03900c3ee362b
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Thu Aug 19 12:19:10 2021 +0200
+
+    Add lm-sensors to dependencies, for xfce4-sensors-plugins CI
+
+commit 2ef5b809e3d891dd576914ac4a9d1b25608e7f82
+Author: Jan Ziak <0xe2.0x9a.0x9b@xfce.org>
+Date:   Mon Jul 26 14:24:31 2021 +0200
+
+    Separate CFLAGS from CXXFLAGS
+    
+    Signed-off-by: Jan Ziak <0xe2.0x9a.0x9b@xfce.org>
+
+commit 411e7ab44751be71a6ca5b6f6e72ad7d5c410cd5
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Sun Jul 25 18:34:55 2021 +0200
+
+    Back to development
+
+commit 399646249d4c9158ba2d7b4aad7658704dfa9818
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Sun Jul 25 18:18:20 2021 +0200
+
+    Updates for release
+
+commit 47ac35062ff081d904aa140373fe42ddb8e54c9b
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Mon Jul 5 12:57:29 2021 +0200
+
+    Try to build higher version available tag
+    
+    - If 4.17.x is available, pick this one
+    - If 4.16.x is the higher (on component without 4.17 yet), pick it
+    - "grep" the component name to remove any "xfce-" release tags
+    - Enhance MR!49
+
+commit 2266437dc8afad8d2bb60516d92dc636402de6c7
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed May 12 13:39:40 2021 +0200
+
+    xfce-do-release: A review of confirmation prompts
+    
+    * Abort on failure in `sanity_checks()`
+    * Always test if the version specified exists as a git tag
+    * Always have a default choice, indicated by a capital letter
+    * Remove unused function `get_on_with_it()`
+
+commit 2c3d0deb8b512e1e4f8f5647a2ff893b4f365cc7
+Author: Landry Breuil <landry@xfce.org>
+Date:   Tue Jun 8 07:25:51 2021 +0000
+
+    helpers: Improve script portability
+    
+    Works better on OpenBSD now.
+
+commit 7c609066e9ec1dc2876818a84453c2988fa24cd1
+Author: Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at>
+Date:   Wed Apr 28 15:11:31 2021 +0200
+
+    Improve Xfce Developer Center (developer.xfce.org)
+
+commit 5f372ab304353bcbb44a5807248cb494cb3024c4
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Tue Jan 26 10:22:57 2021 +0100
+
+    xdt-features.m4: Always enable compilation warnings
+    
+    Fixes #44.
+
+commit dba4b975a67bd39835c49069b1ebb5dc151eb981
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Thu Apr 22 09:45:23 2021 +0200
+
+    g_locale_to_utf8 is misspelled as g_local_to_utf8
+    
+    - Fix issue #46
+    - This code path is almost never used (we don't really test
+      minGW/windows), but let's fix this anyway
+
+commit 54119a26c6faf54f1f1f6d6647a34b0b2239d470
+Author: Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at>
+Date:   Wed Mar 10 15:40:19 2021 +0100
+
+    xfce-build: Always pick the latest stable release
+    
+    Alternatively we could also pick the latest overall release, but the
+    downside would be that the container could jump back and forth between
+    4.17 dev and 4.16 maintenance releases.
+    git describe --tags `git rev-list --tags --max-count=1` --match "$NAME*"
+
+commit 328f47cd130b61e2a6f7198e2a17af236649d6a4
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Sat Jan 30 23:49:17 2021 +0100
+
+    Create the m4/ if it does not exists
+    
+    - So we are sure to not print any warning because of a missing m4/
+      folder on first aclocal run
+
+commit b569f211c16a49cba72f9a9d471c4ca02708f061
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Tue Jan 12 00:19:06 2021 +0100
+
+    Use autoreconf to bootstrap xfce4-dev-tools itself
+
+commit 2759f19c4c9215069ae5cae86d47909ea4d42ab3
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Mon Jan 11 01:19:52 2021 +0100
+
+    Use autoreconf to bootstrap autotools
+    
+    - autoreconf already do all the jobs and detections, we don't need to run manually
+      multiples binaries
+    - Remove obsolete checks/warnings we are doing for libtoolize, all our
+      components have been ported
+    - Simply run autoreconf with good options should be enough for
+      everything
+    - We still need to run intltoolize and gtkdocize manually to support
+      autotool 2.69
+    - This fix issue #42
+
+commit 6885d2a572e127083c2ae72832e373e752db2db5
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sun Jan 31 20:47:00 2021 +0100
+
+    xfce-do-release: Check for `docker` installed
+
+commit 4ffc172cc6594ac6e88d49466f4572d729b5088f
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Sat Jan 30 13:17:57 2021 +0100
+
+    Add dependencies to build thunarx-python CI
+
+commit 248201216d9a59f81a7f72d47ceb19504463d157
+Author: Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at>
+Date:   Tue Jan 19 15:45:51 2021 +0100
+
+    Fix location of apidocs
+    
+    By copying the folder contents we don't end up with an additional docs/
+    folder inside the existing apidocs/ folder.
+
+commit f971760d832bd6f48f7adf313ef5a1e91eda4ae4
+Author: Simon Steinbeiss <simon.steinbeiss@elfenbeinturm.at>
+Date:   Tue Jan 19 10:56:47 2021 +0100
+
+    xfce-build: Fix conditional in gitlabci
+
+commit 6560a412d4eaafcfede6cbb50ab48c5dd32aecd8
+Author: Simon Steinbeiß <ochosi@xfce.org>
+Date:   Tue Jan 19 10:45:19 2021 +0100
+
+    Export apidocs as GitLab artifacts
+    
+    The static index.html page and artifacts get merged into the newly
+    added apidocs folder.
+
+commit 6f651e4a6b1e78d4745cba1b8bb193d73e38af2b
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Mon Jan 11 00:33:52 2021 +0100
+
+    Get rid of glib-gettextize usage and XGETTEXT_ARGS custom args
+    
+    - intltoolize already do all the job that glib-gettextize do (maybe
+      since 10 years)
+    - Remove the XGETTEXT_ARGS custom feature, I can't find any projec using
+      this in xfce
+
+commit 008475ee9a08aaa458df8ff650d739889fb377a0
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Mon Jan 11 00:06:16 2021 +0100
+
+    Remove obsolete AM_GLIB_GNU_GETTEXT
+    
+    - This should no be used anymore since last century
+
+commit e3d60b58f2377766d0265ac8f4d01fbee8d199dd
+Author: Jan Ziak <0xe2.0x9a.0x9b@gmail.com>
+Date:   Tue Jan 12 04:38:36 2021 +0100
+
+    helpers: Fix command-line if git-config core.editor is unset
+    
+    Closes: https://gitlab.xfce.org/xfce/xfce4-dev-tools/-/issues/43
+    Signed-off-by: Jan Ziak <0xe2.0x9a.0x9b@gmail.com>
+
+commit f4212358a35267c8b3fec7a4765b6b44788f212a
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Fri Jan 8 11:22:48 2021 +0100
+
+    Update obsolete m4 macros
+    
+    - They are obsolete since 2.69, and 2.70 now warn about it
+    - Bump minimal autoconf to 2.69 (available since 2012)
+    - AC_HEADER_STDC is not needed anymore: https://www.gnu.org/software/autoconf/manual/autoconf-2.70/html_node/Particular-Headers.html
+
+commit 385f43220419a38c3641482ecefe35189c1db030
+Author: Simon Steinbeiß <ochosi@xfce.org>
+Date:   Sat Jan 2 22:50:18 2021 +0100
+
+    helpers: Add 'xfce-build describe' command
+    
+    This command prints the versions of the components built within this container, which are located in the /git folder.
+
+commit 418ba8d073010112f6f7741dc3e3045020f67d07
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Tue Dec 22 23:49:22 2020 +0100
+
+    Back to development
+
+commit 665dac6b7bccef20ba5911807dc53b60faa7935b
+Author: Romain Bouvier <skunnyk@alteroot.org>
+Date:   Tue Dec 22 21:45:06 2020 +0100
+
+    Updates for release
+
 commit d16010634f98cba467cb61c8b9451e84ed323b7a
 Author: Romain Bouvier <skunnyk@alteroot.org>
 Date:   Fri Dec 18 12:11:39 2020 +0100

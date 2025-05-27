@@ -343,6 +343,7 @@ main (int argc, char **argv)
   gboolean toggle = FALSE;
   GError  *error = NULL;
   gchar  **p;
+  gchar   *basename;
   gchar   *filename;
   gchar   *data;
   gsize    length;
@@ -352,7 +353,9 @@ main (int argc, char **argv)
   setlocale (LC_ALL, NULL);
 
   /* set program name */
-  g_set_prgname (g_path_get_basename (argv[0]));
+  basename = g_path_get_basename (argv[0]);
+  g_set_prgname (basename);
+  g_free (basename);
 
   /* parse command line arguments */
   parse_args (&argc, &argv);
@@ -376,7 +379,7 @@ main (int argc, char **argv)
         }
 
 #ifdef G_OS_WIN32
-      filename = g_local_to_utf8 (argv[1], -1, NULL, NULL, NULL);
+      filename = g_locale_to_utf8 (argv[1], -1, NULL, NULL, NULL);
 #else
       filename = argv[1];
 #endif
@@ -401,7 +404,7 @@ main (int argc, char **argv)
       for (n = argc - 1, p = argv + 1; n-- > 0; ++p, toggle = !toggle)
         {
 #ifdef G_OS_WIN32
-          filename = g_local_to_utf8 (*p, -1, NULL, NULL, NULL);
+          filename = g_locale_to_utf8 (*p, -1, NULL, NULL, NULL);
 #else
           filename = *p;
 #endif

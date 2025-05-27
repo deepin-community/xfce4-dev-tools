@@ -26,7 +26,7 @@ dnl
 
 
 dnl We need recent a autoconf version
-AC_PREREQ([2.60])
+AC_PREREQ([2.69])
 
 
 dnl XDT_SUPPORTED_FLAGS(VAR, FLAGS)
@@ -58,62 +58,46 @@ AC_DEFUN([XDT_FEATURE_DEBUG],
 [
   dnl weird indentation to keep output indentation correct
   AC_ARG_ENABLE([debug],
-                AC_HELP_STRING([--enable-debug@<:@=no|minimum|yes|full@:>@],
-                               [Build with debugging support @<:@default=m4_default([$1], [minimum])@:>@])
-AC_HELP_STRING([--disable-debug], [Include no debugging support]),
+                AS_HELP_STRING([--enable-debug@<:@=no|minimum|yes|full|werror@:>@],[Build with debugging support @<:@default=m4_default([$1], [minimum])@:>@])
+AS_HELP_STRING([--disable-debug],[Include no debugging support]),
                 [enable_debug=$enableval], [enable_debug=m4_default([$1], [minimum])])
 
+  dnl Enable most warnings regardless of debug level. Common flags for both C and C++.
+  xdt_cv_additional_COMMON_FLAGS="-Wall -Wextra \
+                                  -Wno-missing-field-initializers \
+                                  -Wno-unused-parameter \
+                                  -Wmissing-declarations \
+                                  -Wmissing-noreturn -Wpointer-arith \
+                                  -Wcast-align -Wformat -Wformat-security -Wformat-y2k \
+                                  -Winit-self -Wmissing-include-dirs -Wundef \
+                                  -Wredundant-decls -Wshadow"
+
   AC_MSG_CHECKING([whether to build with debugging support])
-  if test x"$enable_debug" = x"full" -o x"$enable_debug" = x"yes"; then
+  if test x"$enable_debug" = x"werror" -o x"$enable_debug" = x"full" -o x"$enable_debug" = x"yes"; then
     AC_DEFINE([DEBUG], [1], [Define for debugging support])
 
-    xdt_cv_additional_CFLAGS="-DXFCE_DISABLE_DEPRECATED \
-                              -Wall -Wextra \
-                              -Wno-missing-field-initializers \
-                              -Wno-unused-parameter -Wold-style-definition \
-                              -Wdeclaration-after-statement \
-                              -Wmissing-declarations \
-                              -Wmissing-noreturn -Wpointer-arith \
-                              -Wcast-align -Wformat -Wformat-security -Wformat-y2k \
-                              -Winit-self -Wmissing-include-dirs -Wundef \
-                              -Wnested-externs"
     CPPFLAGS="$CPPFLAGS"
 
     if test x`uname` = x"Linux"; then
-      xdt_cv_additional_CFLAGS="$xdt_cv_additional_CFLAGS -fstack-protector"
+      xdt_cv_additional_COMMON_FLAGS="$xdt_cv_additional_COMMON_FLAGS -fstack-protector"
     fi
 
-    dnl # signal.h inline is crapy on openbsd
-    if test x`uname` != x"OpenBSD"; then
-      xdt_cv_additional_CFLAGS="$xdt_cv_additional_CFLAGS -Wredundant-decls"
-    fi
-
-    if test x"$enable_debug" = x"full"; then
+    if test x"$enable_debug" = x"werror" -o x"$enable_debug" = x"full"; then
       AC_DEFINE([DEBUG_TRACE], [1], [Define for tracing support])
-      xdt_cv_additional_CFLAGS="$xdt_cv_additional_CFLAGS -O0 -g -Werror"
+      xdt_cv_additional_COMMON_FLAGS="$xdt_cv_additional_COMMON_FLAGS -O0 -g"
       CPPFLAGS="$CPPFLAGS -DG_ENABLE_DEBUG"
-      AC_MSG_RESULT([full])
+      if test x"$enable_debug" = x"werror"; then
+        xdt_cv_additional_COMMON_FLAGS="$xdt_cv_additional_COMMON_FLAGS -Werror -Wno-error=deprecated-declarations"
+        AC_MSG_RESULT([werror])
+      else
+        AC_MSG_RESULT([full])
+      fi
     else
-      xdt_cv_additional_CFLAGS="$xdt_cv_additional_CFLAGS -g -Wshadow"
+      xdt_cv_additional_COMMON_FLAGS="$xdt_cv_additional_COMMON_FLAGS -g"
       AC_MSG_RESULT([yes])
     fi
-
-    XDT_SUPPORTED_FLAGS([supported_CFLAGS], [$xdt_cv_additional_CFLAGS])
-
-    ifelse([$CXX], , , [
-      dnl FIXME: should test on c++ compiler, but the following line causes
-      dnl        autoconf errors for projects that don't check for a
-      dnl        c++ compiler at all.
-      dnl AC_LANG_PUSH([C++])
-      dnl XDT_SUPPORTED_FLAGS([supported_CXXFLAGS], [$xdt_cv_additional_CFLAGS])
-      dnl AC_LANG_POP()
-      dnl        instead, just use supported_CFLAGS...
-      supported_CXXFLAGS="$supported_CFLAGS"
-    ])
-
-    CFLAGS="$CFLAGS $supported_CFLAGS"
-    CXXFLAGS="$CXXFLAGS $supported_CXXFLAGS"
   else
+    xdt_cv_additional_COMMON_FLAGS="$xdt_cv_additional_COMMON_FLAGS"
     CPPFLAGS="$CPPFLAGS -DNDEBUG"
 
     if test x"$enable_debug" = x"no"; then
@@ -122,6 +106,21 @@ AC_HELP_STRING([--disable-debug], [Include no debugging support]),
     else
       AC_MSG_RESULT([minimum])
     fi
+  fi
+
+  xdt_cv_additional_CFLAGS="$xdt_cv_additional_COMMON_FLAGS \
+                            -Wnested-externs \
+                            -Wold-style-definition"
+  xdt_cv_additional_CXXFLAGS="$xdt_cv_additional_COMMON_FLAGS"
+
+  XDT_SUPPORTED_FLAGS([supported_CFLAGS], [$xdt_cv_additional_CFLAGS])
+  XDT_SUPPORTED_FLAGS([supported_CXXFLAGS], [$xdt_cv_additional_CXXFLAGS])
+
+  CFLAGS="$CFLAGS $supported_CFLAGS"
+  CXXFLAGS="$CXXFLAGS $supported_CXXFLAGS"
+  if test x"$enable_debug" = x"werror"; then
+    dnl Useless on C++, only generates warnings.
+    CXXFLAGS="$CXXFLAGS -Wno-error=implicit-function-declaration"
   fi
 ])
 
@@ -135,8 +134,7 @@ dnl
 AC_DEFUN([XDT_FEATURE_VISIBILITY],
 [
   AC_ARG_ENABLE([visibility],
-                AC_HELP_STRING([--disable-visibility],
-                               [Don't use ELF visibility attributes]),
+                AS_HELP_STRING([--disable-visibility],[Don't use ELF visibility attributes]),
                 [enable_visibility=$enableval], [enable_visibility=yes])
   have_gnuc_visibility=no
   if test "x$enable_visibility" != "xno"; then
@@ -188,8 +186,7 @@ dnl
 AC_DEFUN([XDT_FEATURE_LINKER_OPTS],
 [
   AC_ARG_ENABLE([linker-opts],
-                AC_HELP_STRING([--disable-linker-opts],
-                               [Disable linker optimizations]),
+                AS_HELP_STRING([--disable-linker-opts],[Disable linker optimizations]),
                 [enable_linker_opts=$enableval], [enable_linker_opts=yes])
 
   if test "x$enable_linker_opts" != "xno"; then
