@@ -1,3 +1,86 @@
+xfce4-dev-tools (4.20.0-2) unstable; urgency=medium
+
+  * (really) Upload to unstable
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Wed, 18 Dec 2024 20:27:35 +0100
+
+xfce4-dev-tools (4.20.0-1) experimental; urgency=medium
+
+  * New upstream version 4.20.0
+  * d/control: add dependency on python3 for xdt-gen-visibility
+  * Upload to unstable
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Mon, 16 Dec 2024 21:40:42 +0100
+
+xfce4-dev-tools (4.19.4-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 4.19.4.
+
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Fri, 08 Nov 2024 17:33:03 +0100
+
+xfce4-dev-tools (4.19.3-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 4.19.3.
+  * d/control: Set B-D and recommend meson.
+
+ -- Unit 193 <unit193@debian.org>  Tue, 08 Oct 2024 00:45:23 -0400
+
+xfce4-dev-tools (4.19.1-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 4.19.1.
+  * Update Standards-Version to 4.7.0.
+
+ -- Unit 193 <unit193@debian.org>  Thu, 18 Jul 2024 01:09:01 -0400
+
+xfce4-dev-tools (4.19.0-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 4.19.0.
+  * d/control: Add B-D on xsltproc.
+  * Update Standards-Version to 4.6.2.
+
+ -- Unit 193 <unit193@debian.org>  Tue, 04 Jul 2023 04:36:53 -0400
+
+xfce4-dev-tools (4.18.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 4.18.0.
+  * d/docs, d/rules: Opt-out of trimmed changelogs, install NEWS as changelog.
+
+ -- Unit 193 <unit193@debian.org>  Thu, 15 Dec 2022 04:58:17 -0500
+
+xfce4-dev-tools (4.17.2-1) experimental; urgency=medium
+
+  * Team upload.
+
+  [ Akbarkhon Variskhanov ]
+  * Add upstream metadata
+  * d/control: Add docker.io to Suggests
+
+  [ Unit 193 ]
+  * New upstream version 4.17.2.
+
+ -- Unit 193 <unit193@debian.org>  Mon, 05 Dec 2022 01:44:08 -0500
+
+xfce4-dev-tools (4.17.1-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 4.17.1.
+
+ -- Unit 193 <unit193@debian.org>  Wed, 02 Nov 2022 05:16:32 -0400
+
+xfce4-dev-tools (4.17.0-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 4.17.0.
+  * d/rules: Drop '--as-needed' from LDFLAGS, default in stable now.
+  * Update Standards-Version to 4.6.1.
+
+ -- Unit 193 <unit193@debian.org>  Tue, 19 Jul 2022 22:46:25 -0400
+
 xfce4-dev-tools (4.16.0-1) unstable; urgency=medium
 
   * Team upload.

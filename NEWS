@@ -1,3 +1,159 @@
+4.20.0 (2024-12-15)
+======
+
+
+
+4.19.4 (2024-11-01)
+======
+- xfce-do-release: Do not warn when using main instead of master
+- Add libgspell-1-dev to CI build
+- Add more details to the meson template and its README
+- Work around parallel 'make distcheck' bug in gettext
+- Don't quote the filename args passed to 'git diff'
+- ci: Parallelize autotools builds
+
+
+4.19.3 (2024-10-03)
+======
+- xfce-do-release: fix quoting for xfce-build command
+- Add a couple more compiler flags to the meson template
+- Bump glib dependency in meson template
+- Add gobject-introspection example check to meson template
+- build: Bump requirements for Xfce 4.20
+- Disable ABI_CHECK for no-x11 and no-wayland builds
+
+
+4.19.2 (2024-10-01)
+======
+- Add optional ABI check to the CI build stage
+- Add GNU visibility generation and ABI check script
+- Enhance/fix xfce-revision.h
+- Add a project template for meson
+- Add meson support to xfce-do-release
+- Add meson support to GitLab CI template
+- Allow the container build to build dependencies using meson
+- Plug leak stemming from g_path_get_basename
+- Add libyaml-dev to the build container
+- Add libdisplay-info-dev to build container
+- Add meson to CI build
+- ci: Do not store clang-format-diff output
+- ci: Enable on maintenance branches
+- ci: Only run static analysis jobs on default branch
+- ci: Make false-positive patterns match a single warning
+- ci: Explicitly specify C++ compilers
+- ci: Ensure scan-build uses clang as compiler
+- ci: Add static analysis jobs
+- ci: Rename .make hidden job to .configure
+- ci: Add clang build
+- ci: Build with --disable-debug in distcheck stage
+- ci: Only run a stage if previous didn't failed
+- ci: Avoid clang-format job failure if diff is empty
+- Add libdbus-glib-1-dev to CI build
+
+
+4.19.1 (2024-05-29)
+======
+- ci: Add no-x11 and no-wayland builds
+- ci: Make build stage fail on any compiler warning
+- ci: Make jobs running in merge requests interruptible
+- ci: Add clang-format check
+- Update `.gitignore`
+- Bump CI container to Ubuntu 24.04
+- xdt-autogen: Fix aclocal macro search path
+- Add libjson-c-dev to CI build
+- Clone submodules for current repo in CI template
+- Clone submodules when cloning repo for CI container build
+- xfce-do-release: Skip appdata if file does not exist in right format
+- xfce-do-release: Warn about unmodified configure.ac.in
+- xfce-do-release: Use available proc units for make
+- Add libayatana-indicator3-dev to CI build
+- Remove -Wdeclaration-after-statement from list of enabled warnings
+- Add polkitd to CI build
+
+
+4.19.0 (2023-03-05)
+======
+- Add new macro XDT_CHECK_PACKAGE_BINARY
+- Add new macro XDT_CHECK_OPTIONAL_FEATURE
+- Add check for xsltproc (#60)
+- Add Tumbler plugins dependencies to CI build
+- xfce-do-release: added OS dependent sed and make detection
+- xfce-do-release: added user settable sed and make
+- xdt-autogen: Fixed wrong make displayed on FreeBSD
+- Add libxfce4windowing to the API docs HTML index
+- Add libxfce4windowing to CI build
+
+
+4.18.0 (2022-12-15)
+======
+- build: Bump requirements for Xfce 4.18
+
+
+4.17.2 (2022-12-01)
+======
+- Add new libsoup3 to the builder
+- xfce-do-release: unification of update version 'sed' command
+- xfce-do-release: match multiple spaces for git version replace
+- bump copyright year to 2022
+
+
+4.17.1 (2022-10-29)
+======
+- Warn about GLib functions newer than the checked GLib version
+- Drop the test altogether
+- xdt-autogen: Fix deprecation warning from grep 3.8
+- Use GLib structured logging
+- xdt-autogen: simplify do_version_check()
+- Add new dependencies to the builder
+- Do not run useless distcheck in CI
+- Add favicon to Xfce API docs
+- Bump our xfce builder to ubuntu 22.04
+- Add autopoint to xfce-build
+- Add a workaround for thunar documentation generation
+- Update COPYING
+- xfce-build: Fix build with SELinux (!58)
+- xfce-update-news: Add release date and adjust separator
+- xfce-do-release: Make warnings more visible
+- xfce-do-release: Check the copyright year in `configure.ac*`
+- xfce-do-release: Extend `configure.ac.in` update to `configure.ac`
+- xdt-autogen: Fallback on `n` as IFS if `1` is not supported
+- Fix exclusion of `xdt-autogen.in` in `.gitignore`
+- Update developer.xfce.org home to add tumbler
+- Add tumbler to xfce-build container
+- Fix "image:" name in .gitlab-ci.yml
+- Add libsensors4-dev to build-container
+- Try to bump docker-dind image
+- xfce-do-release: Update Appdata file
+- gitlabci: Ensure distcheck still runs
+- gitlabci: Add release stage that retains tarballs
+- Add lm-sensors to dependencies, for xfce4-sensors-plugins CI
+- Separate CFLAGS from CXXFLAGS
+
+
+4.17.0
+======
+- Try to build higher version available tag
+- xfce-do-release: A review of confirmation prompts
+- helpers: Improve script portability
+- Improve Xfce Developer Center (developer.xfce.org)
+- xdt-features.m4: Always enable compilation warnings
+- g_locale_to_utf8 is misspelled as g_local_to_utf8
+- xfce-build: Always pick the latest stable release
+- Create the m4/ if it does not exists
+- Use autoreconf to bootstrap xfce4-dev-tools itself
+- Use autoreconf to bootstrap autotools
+- xfce-do-release: Check for `docker` installed
+- Add dependencies to build thunarx-python CI
+- Fix location of apidocs
+- xfce-build: Fix conditional in gitlabci
+- Export apidocs as GitLab artifacts
+- Get rid of glib-gettextize usage and XGETTEXT_ARGS custom args
+- Remove obsolete AM_GLIB_GNU_GETTEXT
+- helpers: Fix command-line if git-config core.editor is unset
+- Update obsolete m4 macros
+- helpers: Add 'xfce-build describe' command
+
+
 4.16.0
 ======
 - Bump glib to 2.50 based on xfce4.16 roadmap

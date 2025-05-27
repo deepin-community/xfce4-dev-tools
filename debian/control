@@ -4,17 +4,20 @@ Priority: optional
 Maintainer: Debian Xfce Maintainers <debian-xfce@lists.debian.org>
 Uploaders: Yves-Alexis Perez <corsac@debian.org>
 Build-Depends: debhelper-compat (= 13),
-               libglib2.0-dev
+               libglib2.0-dev,
+               meson,
+               xsltproc
 Rules-Requires-Root: no
-Standards-Version: 4.5.1
+Standards-Version: 4.7.0
 Vcs-Git: https://salsa.debian.org/xfce-team/desktop/xfce4-dev-tools.git
 Vcs-Browser: https://salsa.debian.org/xfce-team/desktop/xfce4-dev-tools
 Homepage: https://docs.xfce.org/xfce/xfce4-dev-tools/start
 
 Package: xfce4-dev-tools
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Recommends: autoconf, automake, intltool, libtool
+Depends: ${misc:Depends}, ${shlibs:Depends}, python3
+Recommends: autoconf, automake, intltool, libtool, meson
+Suggests: docker.io
 Description: Script to help building Xfce from git
  xfce4-dev-tools provide an easy way to handle the setup and maintenance of a
  projects build framework. It's required to build Xfce applications from git.
